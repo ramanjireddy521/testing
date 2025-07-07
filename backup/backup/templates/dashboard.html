@@ -1,0 +1,238 @@
+
+<!DOCTYPE html>
+<html>
+<head>
+    <title>System Capacity Dashboard</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 10px;
+            background-color: #f5f5f5;
+        }
+
+        h2 {
+            color: #333;
+            font-size: 20px;
+            margin-bottom: 10px;
+        }
+
+        form {
+            background: white;
+            padding: 10px;
+            border-radius: 4px;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+            margin-bottom: 10px;
+        }
+
+        label {
+            display: inline-block;
+            font-size: 17px;
+            font-weight: bold;
+            margin-right: 6px;
+            margin-bottom: 5px;
+            color: #333;
+        }
+
+        select, input[type="date"], input[type="month"] {
+            padding: 5px 8px;
+            font-size: 16px;
+            border: 2px solid #ddd;
+            border-radius: 6px;
+            margin-right: 10px;
+            background-color: white;
+        }
+
+        select:focus, input:focus {
+            outline: none;
+            border-color: #007BFF;
+            box-shadow: 0 0 5px rgba(0,123,255,0.3);
+        }
+
+        .big-button {
+            padding: 10px 20px;
+            font-size: 15px;
+            font-weight: bold;
+            background-color: #007BFF;
+            color: white;
+            border: none;
+            border-radius: 8px;
+            cursor: pointer;
+            margin-right: 8px;
+            margin-top: 7px;
+            transition: all 0.3s ease;
+            min-width: 100px;
+        }
+
+        .big-button:hover {
+            background-color: #0056b3;
+            transform: translateY(-2px);
+            box-shadow: 0 2px 4px rgba(0,0,0,0.2);
+        }
+
+        .big-button:active {
+            transform: translateY(0);
+        }
+
+        .form-row {
+            margin-bottom: 15px;
+            display: flex;
+            align-items: center;
+            flex-wrap: wrap;
+        }
+
+        .form-row > * {
+            margin-bottom: 8px;
+        }
+
+        .button-container {
+            margin-top: 20px;
+            text-align: center;
+        }
+
+        .graph-container {
+            background: white;
+            padding: 60px;
+            border-radius: 8px;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+            margin-top: 20px;
+        }
+    </style>
+    <script>
+        function toggleDateInput() {
+            const type = document.getElementById("report_type").value;
+            document.getElementById("dayInput").style.display = (type === "day") ? "inline-block" : "none";
+            document.getElementById("monthInput").style.display = (type === "monthly") ? "inline-block" : "none";
+            document.getElementById("customInput").style.display = (type === "custom") ? "inline-block" : "none";
+        }
+
+        function generateGraph() {
+            const type = document.getElementById("report_type").value;
+            const customer = document.getElementById("customer").value;
+            const sid = document.getElementById("sid").value;
+            const host = document.getElementById("host").value;
+            let form = document.getElementById("dashboardForm");
+
+            if (type === "day") {
+                const date = document.getElementById("date").value;
+                if (!customer || !sid || !host || !date) {
+                    alert("Please select Customer, SID, Host, and Date for daily graph.");
+                    return;
+                }
+                form.action = "/dashboard";
+            } else if (type === "monthly") {
+                alert("Report type should be 'Day' to Generate the Graph.");
+                return;
+            } else if (type === "custom") {
+                const start = document.getElementById("start_date").value;
+                const end = document.getElementById("end_date").value;
+                if (!customer || !sid || !host || !start || !end) {
+                    alert("Please select Customer, SID, Host, Start and End Date.");
+                    return;
+                }
+                form.action = "/dashboard";
+            }
+
+            form.method = "POST";
+            form.submit();
+        }
+
+        function downloadExcel() {
+            const type = document.getElementById("report_type").value;
+            const customer = document.getElementById("customer").value;
+            let form = document.getElementById("dashboardForm");
+
+            if (type === "day") {
+                const date = document.getElementById("date").value;
+                if (!customer || !date) {
+                    alert("Please select Customer and Date to download daily report.");
+                    return;
+                }
+                form.action = "/download_dashboard";
+            } else if (type === "monthly") {
+                const month = document.getElementById("month").value;
+                if (!customer || !month) {
+                    alert("Please select Customer and Month to download monthly report.");
+                    return;
+                }
+                document.getElementById("date").value = month + "-01";
+                form.action = "/download_monthly";
+            } else if (type === "custom") {
+                const start = document.getElementById("start_date").value;
+                const end = document.getElementById("end_date").value;
+                if (!customer || !start || !end) {
+                    alert("Please select Customer, Start Date, and End Date.");
+                    return;
+                }
+                form.action = "/download_custom";
+            }
+
+            form.method = "POST";
+            form.submit();
+        }
+    </script>
+</head>
+<body onload="toggleDateInput()">
+    <h2>System Capacity Report</h2>
+    <form id="dashboardForm" method="post">
+        <div class="form-row">
+            <label for="customer">Customer:</label>
+            <select name="customer" id="customer" onchange="this.form.submit()">			 
+                <option value="">Select Customer</option>
+                {% for cust in customers %}
+                    <option value="{{ cust }}" {% if cust == selected_customer %}selected{% endif %}>{{ cust }}</option>
+                {% endfor %}
+            </select>
+
+            <label for="sid">SID:</label>
+            <select name="sid" id="sid" onchange="this.form.submit()">
+                <option value="">Select SID</option>
+                {% for s in sids %}
+                    <option value="{{ s }}" {% if s == selected_sid %}selected{% endif %}>{{ s }}</option>
+                {% endfor %}
+            </select>
+
+            <label for="host">Host:</label>
+            <select name="host" id="host" onchange="this.form.submit()">
+                <option value="">Select Host</option>
+                {% for h in hosts %}
+                    <option value="{{ h }}" {% if h == selected_host %}selected{% endif %}>{{ h }}</option>
+                {% endfor %}
+            </select>
+
+            <label for="report_type">Report Type:</label>
+            <select id="report_type" name="report_type" onchange="toggleDateInput()">
+                <option value="day" {% if report_type == 'day' %}selected{% endif %}>Day</option>
+                <option value="monthly" {% if report_type == 'monthly' %}selected{% endif %}>Monthly</option>
+                <option value="custom" {% if report_type == 'custom' %}selected{% endif %}>Custom</option>
+            </select>
+
+            <span id="dayInput" style="display:none;">
+                <label for="date">Date:</label>
+                <input type="date" name="date" id="date" value="{{ date }}">
+            </span>
+
+            <span id="monthInput" style="display:none;">
+                <label for="month">Month:</label>
+                <input type="month" name="month" id="month" value="{{ date[:7] }}">
+            </span>
+
+            <span id="customInput" style="display:none;">
+                <label for="start_date">Start:</label>
+                <input type="date" name="start_date" id="start_date" value="{{ start_date }}">
+                <label for="end_date">End:</label>
+                <input type="date" name="end_date" id="end_date" value="{{ end_date }}">
+            </span>
+        </div>
+
+        <div class="button-container">
+            <button type="button" class="big-button" onclick="generateGraph()">Generate Graph</button>
+            <button type="button" class="big-button" onclick="downloadExcel()">Download Report</button>
+        </div>
+        <a href="/anomaly">View Anomaly Report</a>
+    </form>
+
+    {% if graph %}
+        <div class="graph-container">{{ graph | safe }}</div>
+    {% endif %}
+</body>
+</html>
