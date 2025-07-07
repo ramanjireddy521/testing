@@ -1,0 +1,206 @@
+table_name, export_requried,truncate_required,import_required
+#ContentRepositories Export, Truncate & Import,,
+CREP,yes,yes,yes
+CREPDESCR,yes,yes,yes
+CREPDOCSP,yes,yes,yes
+CREP_CERT,yes,yes,yes
+CREP_FILE,yes,yes,yes
+CREP_FNGP,yes,yes,yes
+CREP_FTP,yes,yes,yes
+CREP_HTTP,yes,yes,yes
+CREP_LREP,yes,yes,yes
+CREP_R3DB,yes,yes,yes
+CREP_RACL,yes,yes,yes
+CREP_RFC,yes,yes,yes
+CREP_RPC,yes,yes,yes
+CREP_TREE,yes,yes,yes
+#EDIPartnerprofiles   Input Missing,,,
+EDP12,yes,yes,yes
+EDP13,yes,yes,yes
+EDP21,yes,yes,yes
+EDPP1,yes,yes,yes
+TBD20,yes,yes,yes
+TBD30,yes,yes,yes
+TBLSYSDEST,yes,yes,yes
+#EDIPorts       Input Missing,,,
+EDIPOA,yes,yes,yes
+EDIPO,yes,yes,yes
+EDIPORT,yes,yes,yes
+EDIPOD,yes,000,000
+"#Distributionmodel  export,  truncate & No Import  ",,,
+TBD00,yes,yes,yes
+TBD00T,yes,yes,yes
+TBD05,yes,yes,yes
+TBD06,yes,yes,yes
+TBDBR,yes,yes,yes
+TBDBRF,yes,no,no
+TBDLS,yes,no,no
+# Export  Import & No truncate,,,
+TBDLST,yes,no,no
+TBDA2,yes,no,no
+#RFC-destinations  Export  Truncate & Import,,,
+RFCATTRIB,yes,yes,yes
+rfccat,yes,yes,yes
+RFCCHECK,yes,yes,yes
+RFCCMC,yes,yes,yes
+RFCDES,yes,yes,yes
+RFCDESSECU,yes,yes,yes
+RFCDOC,yes,yes,yes
+RFCGO,yes,yes,yes
+RFCSTXTAB,yes,yes,yes
+RFCSYSACL,yes,yes,yes
+RFCTA,yes,yes,yes
+RFCTRUST,yes,yes,yes
+RFCTYPE,yes,yes,yes
+RFCLIST,yes,yes,yes
+RSECACTB,yes,yes,yes
+RSECTAB,yes,yes,yes
+RFCCAT,yes,yes,yes
+#LogicalFilenames Export  Truncate & Import,,,
+FILEPATH,yes,yes,yes
+PATHTEXT,yes,yes,yes
+PATH,yes,yes,yes
+FILESYS,yes,yes,yes
+FSYSTXT,yes,yes,yes
+FILENAMECI,yes,yes,yes
+FILETEXTCI,yes,yes,yes
+FILENAME,yes,yes,yes
+FILETEXT,yes,yes,yes
+OPSYSTEM,yes,yes,yes
+OPTEXT,yes,yes,yes
+PARAMVALUE,yes,yes,yes
+#Archiving Export  Truncate & Import,,,
+ARCH_USR,yes,yes,yes
+#Archive-link Export  Truncate & Import,,,
+TOAAR,yes,yes,yes
+TOAOM,yes,yes,yes
+"#LDAP-settings	  Export  Truncate & Import",,,
+LDAPGATEW,yes,yes,yes
+LDAPSERVER,yes,yes,yes
+LDAPUSER,yes,yes,yes
+#AL11-settings Export  Truncate & Import,,,
+USER_DIR,yes,yes,yes
+#systemdbconnections Export  Truncate & Import,,,
+DBCON,yes,yes,yes
+DBCONUSR,yes,yes,yes
+#QRFCandSLDConfig Export  Truncate & Import,,,
+QSENDDEST,yes,yes,yes
+QIWKTAB,yes,yes,yes
+SXMSCONFVL,yes,yes,yes
+SXMSCONFDF,yes,yes,yes
+"#PSEtables Export,  Truncate & Import",,,
+SSF_PSE_H,yes,yes,yes
+SSF_PSE_D,yes,yes,yes
+#XISLDConfigTableRZ70   Export  Truncate & Import,,,
+SLDAGADM,yes,yes,yes
+#LogonGroups Export  Truncate & Import,,,
+RZLLITAB,yes,yes,yes
+RZLLICLASS,yes,yes,yes
+#OperationModes Export  Truncate & Import,,,
+TPFBA,yes,yes,yes
+BTCOMSDL,yes,yes,yes
+BTCOMSET,yes,yes,yes
+TPFID,yes,yes,yes
+#SNC Export  Truncate & Import,,,
+SNCSYSACL,yes,yes,yes
+"#Profiles Export,  Truncate & Importt",,,
+TPFET,yes,yes,yes
+TPFHT,yes,yes,yes
+"#CUALink Export,  Truncate & Import",,,
+USBAPILINK,yes,yes,yes
+"#BATCHJOBS Export,  Truncate & Import",,,
+BTCEVTJOB,yes,yes,yes
+TBTCO,yes,yes,yes
+TBTCP,yes,yes,yes
+TBTCS,yes,yes,yes
+TPRI_PAR,yes,yes,yes
+VARI,yes,yes,yes
+VARID,yes,yes,yes
+VARINUM,yes,yes,yes
+VARIS,yes,yes,yes
+VARIT,yes,yes,yes
+"#CCMS	 Export,  Truncate & No Import",,,
+ALCONSEG,yes,yes,yes
+SAPWLCOLPA,yes,yes,yes
+SAPWLSERV,yes,yes,yes
+ALALERTDB,yes,yes,yes
+PAHI,yes,yes,yes
+CCMSBIDATA,yes,yes,yes
+CCMSBIMETH,yes,yes,yes
+CCMSBITHRH,yes,yes,yes
+"#EXTERNALCOMMANDS Export,  Truncate & No Import",,,
+SXPGCOSTAB,yes,yes,yes
+#SAPLICENSE Export  Truncate & Import,,,
+SAPLIKEY,yes,yes,yes
+"#PRINTERS Export,  Truncate & Import",,,
+TSP03,yes,yes,yes
+TSP03A,yes,yes,yes
+TSP03C,yes,yes,yes
+TSP03D,yes,yes,yes
+TSP03L,yes,yes,yes
+TSP03POCCNF,yes,yes,yes
+TSP03POCPRE,yes,yes,yes
+TSP03T,yes,yes,yes
+TSPCMDS,yes,yes,yes
+TSPLOMS,yes,yes,yes
+TSPROMS,yes,yes,yes
+TSPSV,yes,yes,yes
+"#SICF Export,  No Truncate & Import",,,
+ICFAPPLICATION,yes,no,no
+ICFDOCU,yes,no,no
+ICFHANDLER,yes,no,no
+ICFINSTACT,yes,no,no
+ICFSECPASSWD,yes,no,no
+ICFSERVICE,yes,no,no
+ICFSERVLOC,yes,no,no
+ICFVIRHOST,yes,no,no
+#Export  Truncate & Import,,,
+HTTPURLLOC,yes,yes,yes
+#BI No Export & Import and Truncate,,,
+RSTPRFC,no,yes,no
+RSPOR_T_PORTAL,no,yes,no
+#TMSQualityApprovalSettings  No Export  Import & Truncate,,,
+TMSQLASTWL,no,yes,no
+TMSQNOTES,no,yes,no
+TMSQNOTESH,no,yes,no
+TMSQWL,no,yes,no
+TMSQWLF,no,yes,no
+TMSQWLFH,no,yes,no
+TMSQWLH,no,yes,no
+#Export  Truncate & Import,,,
+E070L,yes,yes,yes
+#DeveloperKeys No Export, Import & Truncate,,
+DEVACCESS,no,no,no
+#Exportlogongroups Export  Truncate & Import,,,
+RZLLITAB,yes,yes,yes
+RZLLICLASS,yes,yes,yes
+#Exportoperationmodes Export  Truncate & Import,,,
+TPFBA,yes,yes,yes
+BTCOMSDL,yes,yes,yes
+BTCOMSET,yes,yes,yes
+TPFID,yes,yes,yes
+#ExportSTRUSTSSO2certificates Export  Truncate & Import,,,
+SSF_PSE_D,yes,yes,yes
+SSF_PSE_H,yes,yes,yes
+"#Exportmailsettings Export,  Truncate & Import",,,
+SXROUTE,yes,yes,yes
+SXNODES,yes,yes,yes
+#User Master Export & Import No Truncate,,,
+USR01,YES,no,yes
+USR02,YES,no,yes
+USR03,YES,no,yes
+USR04,YES,no,yes
+AGR_USERS,YES,no,yes
+UST04,YES,no,yes
+USR10,YES,no,yes
+ADR6,YES,no,yes
+ADR2,YES,no,yes
+USR21,YES,no,yes
+#SecurityTables Export & Import No Trucate,,,
+USH12,yes,no,yes
+USH10,yes,no,yes
+USH04,yes,no,yes
+USH02,yes,no,yes
+USGRP,yes,no,yes
+USGRP_USER,yes,no,yes
+USGRPT,yes,no,yes
